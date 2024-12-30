@@ -113,7 +113,3 @@ docker exec -it <django-container-id> python manage.py test
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for review.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
