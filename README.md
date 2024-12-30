@@ -97,18 +97,45 @@ A Postman collection has been prepared for manual testing of the APIs. Import th
 2. Provide the necessary headers and body content for POST and PUT requests.
 3. Verify the response status and body.
 
-### Automated Testing
-
-Run Django tests:
-```bash
-docker exec -it <django-container-id> python manage.py test
-```
 
 ## Common Issues
 
 - **RabbitMQ Connection Issues**: Ensure RabbitMQ is running and accessible.
 - **Database Connectivity**: Check if the MySQL service is up and running.
 - **Host Configuration**: Update the `ALLOWED_HOSTS` in Django settings to include `host.docker.internal`.
+
+## Problems Faced and Learnings
+
+### Problems Faced
+1. **Database Connection Issues**:
+   - Encountered MySQL connection errors due to incorrect credentials.
+   - Resolved by ensuring consistent environment variables in `docker-compose.yml`.
+
+2. **RabbitMQ Channel Closure**:
+   - Faced `Channel is closed` errors during message publishing.
+   - Fixed by ensuring a persistent connection and handling connection resets in `producer.py`.
+
+3. **Django Host Restrictions**:
+   - Received `Invalid HTTP_HOST header` errors.
+   - Resolved by adding `host.docker.internal` to `ALLOWED_HOSTS`.
+
+4. **Duplicate Entries in Database**:
+   - Encountered `IntegrityError` when users liked the same product multiple times.
+   - Implemented unique constraints in the `ProductUser` model to handle duplicates.
+
+5. **Docker Networking Issues**:
+   - APIs running in containers couldn’t resolve `localhost`.
+   - Solved by using `host.docker.internal` for inter-service communication.
+
+### Learnings
+- **Microservices Architecture**: Gained hands-on experience in designing loosely coupled systems.
+- **Event-Driven Communication**: Learned how RabbitMQ facilitates asynchronous communication.
+- **Database Transactions**: Understood the importance of atomic transactions in avoiding data inconsistencies.
+- **Containerization**: Mastered Docker Compose for orchestrating multi-container applications.
+- **API Testing**: Improved skills in creating detailed Postman collections for manual testing.
+
+---
+
 
 ## Contributing
 
