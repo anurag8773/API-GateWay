@@ -86,6 +86,7 @@ API-GateWay/
 | POST   | `/api/products/<id>/like`    | Like a product          |
 
 ## Postman Collection
+Collection Link: https://documenter.getpostman.com/view/37271849/2sAYJ7ey2G
 
 A Postman collection has been prepared for manual testing of the APIs. Import the collection into Postman to start testing.
 
